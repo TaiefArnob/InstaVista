@@ -35,12 +35,14 @@ function App() {
   const { user } = useSelector(store => store.auth);
   const dispatch = useDispatch();
   const {socket}=useSelector(store=>store.socketio)
+  const socketURL = import.meta.env.VITE_SOCKET_URL;
+
 
   useEffect(() => {
     let socketio; 
 
     if (user) {
-      socketio = io('http://localhost:8080', {
+      socketio = io(socketURL, {
         query: {
           userId: user?._id,
         },

@@ -55,7 +55,7 @@ const Login = () => {
     if(user){
       navigate('/')
     }
-  },[])
+  },[user])
   return (
     <div className="flex items-center justify-center w-screen h-screen bg-gradient-to-br from-gray-900 via-blue-950 to-purple-900 relative">
       <Card className="w-[420px] shadow-2xl bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl p-6">

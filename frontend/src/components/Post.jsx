@@ -28,6 +28,7 @@ import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
 import { deletePost, addComment } from "@/redux/postSlice";
 import { useNavigate } from "react-router-dom";
+import { FaUserCircle } from "react-icons/fa";
 
 const Post = ({ post }) => {
   const [openComments, setOpenComments] = useState(false);
@@ -150,11 +151,15 @@ const Post = ({ post }) => {
           className="flex items-center cursor-pointer"
           onClick={() => navigate(`/profile/${post.author._id}`)}
         >
-          <img
-            src={post.author.profilePicture}
-            alt="Profile"
-            className="w-10 h-10 rounded-full object-cover"
-          />
+          {post.author?.profilePicture ? (
+            <img
+              src={post.author.profilePicture}
+              alt="Profile"
+              className="w-10 h-10 rounded-full object-cover"
+            />
+          ) : (
+            <FaUserCircle className="w-10 h-10 text-gray-400" />
+          )}
           <div className="ml-3 flex items-center">
             <h3 className="font-semibold text-sm">{post.author.username}</h3>
             {post.author._id === user._id ? (
